@@ -45,6 +45,7 @@ describe('PokemonListItemComponent', () => {
     const el = mainElement.querySelector(
       formatTestId(TEST_PKM_LIST_ITEM__IMAGE)
     )!;
+    expect(el).not.toBeNull();
     expect(el.getAttribute('src')).toBe(spr);
     done();
   });
@@ -58,6 +59,7 @@ describe('PokemonListItemComponent', () => {
     const p = mainElement.querySelector(
       formatTestId(TEST_PKM_LIST_ITEM__NAME)
     )!;
+    expect(p).not.toBeNull();
     expect(p.textContent).toEqual('Bulbasaur');
     done();
   });
@@ -69,6 +71,7 @@ describe('PokemonListItemComponent', () => {
 
     const mainElement: HTMLElement = fixture.nativeElement;
     const p = mainElement.querySelector(formatTestId(TEST_PKM_LIST_ITEM__ID))!;
+    expect(p).not.toBeNull();
     expect(p.textContent).toEqual('bulbasaur');
     done();
   });
@@ -85,6 +88,7 @@ describe('PokemonListItemComponent', () => {
     const a: HTMLAnchorElement = mainElement.querySelector(
       formatTestId(TEST_PKM_LIST_ITEM)
     )!;
+    expect(a).not.toBeNull();
     a.click();
   });
 });
