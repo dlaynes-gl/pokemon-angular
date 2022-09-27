@@ -15,7 +15,7 @@ import {
   PW_PKM_NAVIGATION__NEXT,
   PW_PKM_NAVIGATION__PREV,
   PW_PKM_SEARCH_BAR,
-} from './test_ids';
+} from '../src/app/config/test_ids';
 
 const baseURL = PokemonApiService.baseUrl
 
