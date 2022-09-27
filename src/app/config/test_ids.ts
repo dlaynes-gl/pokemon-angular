@@ -1,7 +1,3 @@
-export function formatTestId(str: string) {
-  return `[data-test="${str}"]`;
-}
-
 export const TEST_PKM_SEARCH_BAR = 'search';
 
 export const TEST_PKM_LIST = 'list';

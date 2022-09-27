@@ -8,9 +8,9 @@ import {
   TEST_PKM_LIST_ITEM__ID,
   TEST_PKM_LIST_ITEM__IMAGE,
   TEST_PKM_LIST_ITEM__NAME,
-  formatTestId,
   TEST_PKM_LIST_ITEM,
 } from 'src/app/config/test_ids';
+import { formatTestId } from 'src/app/utils/tests';
 
 import { PokemonListItemComponent } from './pokemon-list-item.component';
 
@@ -76,7 +76,6 @@ describe('PokemonListItemComponent', () => {
   it('should show call the action function when clicked', (done) => {
     component.identifier = 'ivysaur';
     component.selected.subscribe((id: string) => {
-      console.log('Id', id);
       expect(id).toBe('ivysaur');
       done();
     });
@@ -86,7 +85,6 @@ describe('PokemonListItemComponent', () => {
     const a: HTMLAnchorElement = mainElement.querySelector(
       formatTestId(TEST_PKM_LIST_ITEM)
     )!;
-    expect(a).toBeDefined();
     a.click();
   });
 });

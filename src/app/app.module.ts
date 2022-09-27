@@ -12,7 +12,9 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +29,9 @@ import { EffectsModule } from '@ngrx/effects';
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([])
   ],

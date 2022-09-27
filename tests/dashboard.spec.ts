@@ -14,9 +14,9 @@ import {
   TEST_PKM_NAVIGATION,
   TEST_PKM_NAVIGATION__NEXT,
   TEST_PKM_NAVIGATION__PREV,
-  TEST_PKM_SEARCH_BAR,
-  formatTestId
+  TEST_PKM_SEARCH_BAR
 } from '../src/app/config/test_ids';
+import { formatTestId } from 'src/app/utils/tests';
 
 const baseURL = PokemonApiService.baseUrl
 

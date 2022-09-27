@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { TEST_PKM_SEARCH_BAR } from 'src/app/config/test_ids';
+import { formatTestId } from 'src/app/utils/tests';
 
 import { SearchBarComponent } from './search-bar.component';
 
@@ -17,7 +20,38 @@ describe('SearchBarComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create', (done) => {
     expect(component).toBeTruthy();
+    done();
   });
+
+  it('should change the local value when writting on the input', (done) => {
+    const input = fixture.debugElement.query(
+      By.css(formatTestId(TEST_PKM_SEARCH_BAR))
+    )!;
+    expect(input.nativeElement).toBeDefined();
+    input.nativeElement.value = "Char"
+    input.triggerEventHandler('change', { target: input.nativeElement });
+
+    fixture.detectChanges();
+    expect(component.data).toBe("Char")
+    done();
+  });
+
+  it('should emit the searched value when writting on the input', (done)=>{
+    const input = fixture.debugElement.query(
+      By.css(formatTestId(TEST_PKM_SEARCH_BAR))
+    )!;
+
+    component.searched.subscribe((val: string) => {
+      expect(val).toBe('Char');
+      done();
+    });
+
+    input.nativeElement.value = "Char"
+    input.triggerEventHandler('change', { target: input.nativeElement });
+
+    fixture.detectChanges();
+  });
+
 });
