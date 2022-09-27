@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { PokemonApiService } from 'src/app/services/pokemon-api.service';
 import { pokemonRoutes } from './mock_endpoints';
 import {
   PW_PKM_DETAIL,
@@ -16,7 +17,7 @@ import {
   PW_PKM_SEARCH_BAR,
 } from './test_ids';
 
-const baseURL = 'https://pokeapi.co/api/v2/pokemon'
+const baseURL = PokemonApiService.baseUrl
 
 test.describe("Pokemon dashboard", () => {
     test.beforeEach(async function({page}){

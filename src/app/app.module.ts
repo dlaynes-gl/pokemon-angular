@@ -9,6 +9,9 @@ import { PokemonListComponent } from './components/pokemon-list/pokemon-list.com
 import { PokemonListItemComponent } from './components/pokemon-list-item/pokemon-list-item.component';
 import { PokemonDetailComponent } from './components/pokemon-detail/pokemon-detail.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
+import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -21,8 +24,11 @@ import { NavigationComponent } from './components/navigation/navigation.componen
     NavigationComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]
