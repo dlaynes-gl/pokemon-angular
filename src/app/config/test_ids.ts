@@ -1,18 +1,22 @@
-export const PW_PKM_SEARCH_BAR = '[data-pw="search"]';
+export function formatTestId(str: string) {
+  return `[data-test="${str}"]`;
+}
 
-export const PW_PKM_LIST = '[data-pw="list"]';
+export const TEST_PKM_SEARCH_BAR = 'search';
 
-export const PW_PKM_LIST_ITEM = '[data-pw="list-item"]';
-export const PW_PKM_LIST_ITEM__NAME = '[data-pw="list-item__name"]';
-export const PW_PKM_LIST_ITEM__IMAGE = '[data-pw="list-item__image"]';
-export const PW_PKM_LIST_ITEM__ID = '[data-pw="list-item__id"]';
+export const TEST_PKM_LIST = 'list';
 
-export const PW_PKM_DETAIL = '[data-pw="detail"]';
-export const PW_PKM_DETAIL__TYPE = '[data-pw="detail__type"]';
-export const PW_PKM_DETAIL__WEIGHT = '[data-pw="detail__weight"]';
-export const PW_PKM_DETAIL__SPRITE = '[data-pw="detail__sprite"]';
-export const PW_PKM_DETAIL__MOVE = '[data-pw="detail__move"]';
+export const TEST_PKM_LIST_ITEM = 'list-item';
+export const TEST_PKM_LIST_ITEM__NAME = 'list-item__name';
+export const TEST_PKM_LIST_ITEM__IMAGE = 'list-item__image';
+export const TEST_PKM_LIST_ITEM__ID = 'list-item__id';
 
-export const PW_PKM_NAVIGATION = '[data-pw="navigation"]';
-export const PW_PKM_NAVIGATION__NEXT = '[data-pw="navigation__btn-next"]';
-export const PW_PKM_NAVIGATION__PREV = '[data-pw="navigation__btn-prev"]';
+export const TEST_PKM_DETAIL = 'detail';
+export const TEST_PKM_DETAIL__TYPE = 'detail__type';
+export const TEST_PKM_DETAIL__WEIGHT = 'detail__weight';
+export const TEST_PKM_DETAIL__SPRITE = 'detail__sprite';
+export const TEST_PKM_DETAIL__MOVE = 'detail__move';
+
+export const TEST_PKM_NAVIGATION = 'navigation';
+export const TEST_PKM_NAVIGATION__NEXT = 'navigation__btn-next';
+export const TEST_PKM_NAVIGATION__PREV = 'navigation__btn-prev';

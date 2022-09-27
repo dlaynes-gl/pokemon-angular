@@ -33,7 +33,7 @@ export interface PokemonMoveItem {
   }[];
 }
 
-export interface SpriteList {
+export interface PokemonSpriteList {
   back_default?: string;
   back_female?: string | null;
   back_gray?: string;
@@ -74,12 +74,12 @@ export interface Pokemon {
   order: number;
   past_types: unknown[];
   species: PokemonMetaLink;
-  sprites: SpriteList & {
-    other: Record<string, SpriteList>;
+  sprites: PokemonSpriteList & {
+    other: Record<string, PokemonSpriteList>;
   } & {
     versions: Record<
       string,
-      Record<string, SpriteList & { animated?: SpriteList }>
+      Record<string, PokemonSpriteList & { animated?: PokemonSpriteList }>
     >;
   };
   stats: PokemonStatItem[];
