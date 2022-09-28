@@ -1,8 +1,6 @@
 import {
   ComponentFixture,
-  fakeAsync,
-  TestBed,
-  tick,
+  TestBed
 } from '@angular/core/testing';
 import {
   TEST_PKM_LIST_ITEM__ID,
@@ -10,7 +8,7 @@ import {
   TEST_PKM_LIST_ITEM__NAME,
   TEST_PKM_LIST_ITEM,
 } from 'src/app/config/test_ids';
-import { formatTestId } from 'src/app/utils/tests';
+import { findByTestId } from 'src/app/utils/tests';
 
 import { PokemonListItemComponent } from './pokemon-list-item.component';
 
@@ -41,10 +39,7 @@ describe('PokemonListItemComponent', () => {
 
     fixture.detectChanges();
 
-    const mainElement: HTMLElement = fixture.nativeElement;
-    const el = mainElement.querySelector(
-      formatTestId(TEST_PKM_LIST_ITEM__IMAGE)
-    )!;
+    const el = findByTestId(fixture.nativeElement, TEST_PKM_LIST_ITEM__IMAGE)! as HTMLImageElement;
     expect(el).not.toBeNull();
     expect(el.getAttribute('src')).toBe(spr);
     done();
@@ -55,12 +50,9 @@ describe('PokemonListItemComponent', () => {
 
     fixture.detectChanges();
 
-    const mainElement: HTMLElement = fixture.nativeElement;
-    const p = mainElement.querySelector(
-      formatTestId(TEST_PKM_LIST_ITEM__NAME)
-    )!;
-    expect(p).not.toBeNull();
-    expect(p.textContent).toEqual('Bulbasaur');
+    const el = findByTestId(fixture.nativeElement, TEST_PKM_LIST_ITEM__NAME)! as HTMLSpanElement;
+    expect(el).not.toBeNull();
+    expect(el.textContent).toEqual('Bulbasaur');
     done();
   });
 
@@ -69,10 +61,9 @@ describe('PokemonListItemComponent', () => {
 
     fixture.detectChanges();
 
-    const mainElement: HTMLElement = fixture.nativeElement;
-    const p = mainElement.querySelector(formatTestId(TEST_PKM_LIST_ITEM__ID))!;
-    expect(p).not.toBeNull();
-    expect(p.textContent).toEqual('# 1');
+    const el = findByTestId(fixture.nativeElement, TEST_PKM_LIST_ITEM__ID)! as HTMLSpanElement;
+    expect(el).not.toBeNull();
+    expect(el.textContent).toEqual('# 1');
     done();
   });
 
@@ -84,11 +75,8 @@ describe('PokemonListItemComponent', () => {
     });
     fixture.detectChanges();
 
-    const mainElement: HTMLElement = fixture.nativeElement;
-    const a: HTMLAnchorElement = mainElement.querySelector(
-      formatTestId(TEST_PKM_LIST_ITEM)
-    )!;
-    expect(a).not.toBeNull();
-    a.click();
+    const el = findByTestId(fixture.nativeElement, TEST_PKM_LIST_ITEM)! as HTMLAnchorElement;
+    expect(el).not.toBeNull();
+    el.click();
   });
 });

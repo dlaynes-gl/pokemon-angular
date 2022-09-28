@@ -30,6 +30,8 @@ describe('SearchBarComponent', () => {
   });
 
   it('should change the local value when writting on the input', (done) => {
+    // We need the function triggerEventHandler(), this section
+    // won't be refactored for now
     const input = fixture.debugElement.query(
       By.css(formatTestId(TEST_PKM_SEARCH_BAR))
     )!;
@@ -43,6 +45,8 @@ describe('SearchBarComponent', () => {
   });
 
   it('should emit the searched value when writting on the input', (done)=>{
+    // We need the function triggerEventHandler(), this section
+    // won't be refactored for now
     const input = fixture.debugElement.query(
       By.css(formatTestId(TEST_PKM_SEARCH_BAR))
     )!;

@@ -1,9 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EVENT_NAV_CLICK_PREV } from 'src/app/config/constants/events';
 import { TEST_PKM_NAVIGATION__NEXT, TEST_PKM_NAVIGATION__PREV } from 'src/app/config/test_ids';
 import { ChildEventService } from 'src/app/services/child-event.service';
-import { formatTestId } from 'src/app/utils/tests';
+import { findByTestId } from 'src/app/utils/tests';
 
 import { NavigationButtonComponent } from './navigation-button.component';
 
@@ -36,10 +35,7 @@ describe('NavigationButtonComponent', () => {
 
     fixture.detectChanges();
 
-    const mainElement: HTMLElement = fixture.nativeElement;
-    const button = mainElement.querySelector(
-      formatTestId(TEST_PKM_NAVIGATION__NEXT)
-    )!;
+    const button = findByTestId(fixture.nativeElement, TEST_PKM_NAVIGATION__NEXT)!;
     expect(button).toBeDefined();
     expect(button).not.toBeNull();
     expect(button.textContent).toEqual('Next');
@@ -53,10 +49,7 @@ describe('NavigationButtonComponent', () => {
     component.eventName = EVENT_NAV_CLICK_PREV;
     fixture.detectChanges();
 
-    const mainElement: HTMLElement = fixture.nativeElement;
-    const button: HTMLButtonElement = mainElement.querySelector(
-      formatTestId(TEST_PKM_NAVIGATION__PREV)
-    )!;
+    const button = findByTestId(fixture.nativeElement, TEST_PKM_NAVIGATION__PREV)! as HTMLButtonElement;
     expect(button).not.toBeNull();
     button.click();
     service.getEventListener().subscribe((evt: string) => {
@@ -70,9 +63,7 @@ describe('NavigationButtonComponent', () => {
     component.label = 'Prev';
     component.testId = TEST_PKM_NAVIGATION__PREV;
     fixture.detectChanges();
-    const button: HTMLButtonElement = fixture.nativeElement.querySelector(
-      formatTestId(TEST_PKM_NAVIGATION__PREV)
-    )!;
+    const button = findByTestId(fixture.nativeElement, TEST_PKM_NAVIGATION__PREV)! as HTMLButtonElement;
     expect(button.disabled).toBeTruthy();
    });
 
@@ -81,9 +72,7 @@ describe('NavigationButtonComponent', () => {
     component.label = 'Prev';
     component.testId = TEST_PKM_NAVIGATION__PREV;
     fixture.detectChanges();
-    const button: HTMLButtonElement = fixture.nativeElement.querySelector(
-      formatTestId(TEST_PKM_NAVIGATION__PREV)
-    )!;
+    const button = findByTestId(fixture.nativeElement, TEST_PKM_NAVIGATION__PREV)! as HTMLButtonElement;
     expect(button.disabled).toBeFalsy();
    });
 });
