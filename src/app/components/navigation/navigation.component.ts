@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-navigation',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
 
+  @Input() prevEnabled = false;
+
+  @Input() nextEnabled = false;
+
   constructor() { }
 
   ngOnInit(): void {
+  
   }
 
 }

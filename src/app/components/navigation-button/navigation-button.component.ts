@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChildEventService } from 'src/app/services/child-event.service';
 
 @Component({
   selector: 'app-navigation-button',
@@ -7,19 +8,24 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class NavigationButtonComponent implements OnInit {
 
-  @Input() label = 'Submit'
+  @Input() label = 'Submit';
 
   @Input() testId?: string;
 
-  @Output() clicked = new EventEmitter<boolean>()
+  @Input() eventName: string = '';
 
-  constructor() { }
+  constructor(private eventService: ChildEventService) { }
 
   ngOnInit(): void {
   }
 
   onClick() {
-    this.clicked.emit(true);
+    console.log("Emiting event", this.eventName);
+    if(this.eventName){
+      this.eventService.emitChildEvent(this.eventName);
+    } else {
+      console.warn("No event name was chosen for the button component!")
+    }
   }
 
 }

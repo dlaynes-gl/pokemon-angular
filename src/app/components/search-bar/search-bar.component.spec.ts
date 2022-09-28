@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { TEST_PKM_SEARCH_BAR } from 'src/app/config/test_ids';
 import { formatTestId } from 'src/app/utils/tests';
@@ -11,7 +12,10 @@ describe('SearchBarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SearchBarComponent ]
+      declarations: [ SearchBarComponent ],
+      imports: [
+        FormsModule
+      ]
     })
     .compileComponents();
 

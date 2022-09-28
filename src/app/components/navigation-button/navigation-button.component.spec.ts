@@ -1,5 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EVENT_NAV_CLICK_PREV } from 'src/app/config/constants/events';
 import { TEST_PKM_NAVIGATION__NEXT, TEST_PKM_NAVIGATION__PREV } from 'src/app/config/test_ids';
+import { ChildEventService } from 'src/app/services/child-event.service';
 import { formatTestId } from 'src/app/utils/tests';
 
 import { NavigationButtonComponent } from './navigation-button.component';
@@ -7,12 +10,16 @@ import { NavigationButtonComponent } from './navigation-button.component';
 describe('NavigationButtonComponent', () => {
   let component: NavigationButtonComponent;
   let fixture: ComponentFixture<NavigationButtonComponent>;
+  let service: ChildEventService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NavigationButtonComponent ]
-    })
-    .compileComponents();
+      declarations: [ NavigationButtonComponent ],
+      providers: [
+        ChildEventService
+      ]
+    });
+    TestBed.compileComponents();
 
     fixture = TestBed.createComponent(NavigationButtonComponent);
     component = fixture.componentInstance;
@@ -30,8 +37,6 @@ describe('NavigationButtonComponent', () => {
     fixture.detectChanges();
 
     const mainElement: HTMLElement = fixture.nativeElement;
-    console.log("Main button container", mainElement)
-
     const button = mainElement.querySelector(
       formatTestId(TEST_PKM_NAVIGATION__NEXT)
     )!;
@@ -42,12 +47,10 @@ describe('NavigationButtonComponent', () => {
   });
 
   it('should emit an event when clicked', (done) => {
+    service = TestBed.inject(ChildEventService);
     component.label = 'Prev';
-    component.testId = TEST_PKM_NAVIGATION__PREV
-    component.clicked.subscribe((bool: boolean) => {
-      expect(bool).toBeTrue();
-      done();
-    });
+    component.testId = TEST_PKM_NAVIGATION__PREV;
+    component.eventName = EVENT_NAV_CLICK_PREV;
     fixture.detectChanges();
 
     const mainElement: HTMLElement = fixture.nativeElement;
@@ -56,6 +59,10 @@ describe('NavigationButtonComponent', () => {
     )!;
     expect(button).not.toBeNull();
     button.click();
+    service.getEventListener().subscribe((evt: string) => {
+      expect(evt).toBe(EVENT_NAV_CLICK_PREV);
+      done();
+    });
   })
 
 });
