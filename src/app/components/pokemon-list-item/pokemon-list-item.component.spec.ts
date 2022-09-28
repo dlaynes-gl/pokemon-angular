@@ -1,7 +1,4 @@
-import {
-  ComponentFixture,
-  TestBed
-} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import {
   TEST_PKM_LIST_ITEM__ID,
   TEST_PKM_LIST_ITEM__IMAGE,
@@ -34,7 +31,10 @@ describe('PokemonListItemComponent', () => {
 
     fixture.detectChanges();
 
-    const el = findByTestId(fixture.nativeElement, TEST_PKM_LIST_ITEM__IMAGE)! as HTMLImageElement;
+    const el = findByTestId(
+      fixture.nativeElement,
+      TEST_PKM_LIST_ITEM__IMAGE
+    )! as HTMLImageElement;
     expect(el).not.toBeNull();
     expect(el.getAttribute('src')).toBe(spr);
     done();
@@ -45,7 +45,10 @@ describe('PokemonListItemComponent', () => {
 
     fixture.detectChanges();
 
-    const el = findByTestId(fixture.nativeElement, TEST_PKM_LIST_ITEM__NAME)! as HTMLSpanElement;
+    const el = findByTestId(
+      fixture.nativeElement,
+      TEST_PKM_LIST_ITEM__NAME
+    )! as HTMLSpanElement;
     expect(el).not.toBeNull();
     expect(el.textContent).toEqual('Bulbasaur');
     done();
@@ -56,7 +59,10 @@ describe('PokemonListItemComponent', () => {
 
     fixture.detectChanges();
 
-    const el = findByTestId(fixture.nativeElement, TEST_PKM_LIST_ITEM__ID)! as HTMLSpanElement;
+    const el = findByTestId(
+      fixture.nativeElement,
+      TEST_PKM_LIST_ITEM__ID
+    )! as HTMLSpanElement;
     expect(el).not.toBeNull();
     expect(el.textContent).toEqual('# 1');
     done();
@@ -70,7 +76,10 @@ describe('PokemonListItemComponent', () => {
     });
     fixture.detectChanges();
 
-    const el = findByTestId(fixture.nativeElement, TEST_PKM_LIST_ITEM)! as HTMLAnchorElement;
+    const el = findByTestId(
+      fixture.nativeElement,
+      TEST_PKM_LIST_ITEM
+    )! as HTMLAnchorElement;
     expect(el).not.toBeNull();
     el.click();
   });

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import type { PokemonItem } from 'src/app/models/app/PokemonItem';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PokemonListComponent implements OnInit {
 
+  @Input() pokemonList: PokemonItem[] = []
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  trackById(idx: number, item: PokemonItem){
+    return item.id
   }
 
 }

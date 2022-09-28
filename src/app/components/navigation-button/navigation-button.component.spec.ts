@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { EVENT_NAV_CLICK_PREV } from 'src/app/config/constants/events';
-import { TEST_PKM_NAVIGATION__NEXT, TEST_PKM_NAVIGATION__PREV } from 'src/app/config/test_ids';
+import {
+  TEST_PKM_NAVIGATION__NEXT,
+  TEST_PKM_NAVIGATION__PREV,
+} from 'src/app/config/test_ids';
 import { ChildEventService } from 'src/app/services/child-event.service';
 import { findByTestId } from 'src/app/utils/tests';
 
@@ -13,10 +16,8 @@ describe('NavigationButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NavigationButtonComponent ],
-      providers: [
-        ChildEventService
-      ]
+      declarations: [NavigationButtonComponent],
+      providers: [ChildEventService],
     });
     TestBed.compileComponents();
 
@@ -27,11 +28,14 @@ describe('NavigationButtonComponent', () => {
 
   it('should change the button label', (done) => {
     component.label = 'Next';
-    component.testId = TEST_PKM_NAVIGATION__NEXT
+    component.testId = TEST_PKM_NAVIGATION__NEXT;
 
     fixture.detectChanges();
 
-    const button = findByTestId(fixture.nativeElement, TEST_PKM_NAVIGATION__NEXT)!;
+    const button = findByTestId(
+      fixture.nativeElement,
+      TEST_PKM_NAVIGATION__NEXT
+    )!;
     expect(button).toBeDefined();
     expect(button).not.toBeNull();
     expect(button.textContent).toEqual('Next');
@@ -45,7 +49,10 @@ describe('NavigationButtonComponent', () => {
     component.eventName = EVENT_NAV_CLICK_PREV;
     fixture.detectChanges();
 
-    const button = findByTestId(fixture.nativeElement, TEST_PKM_NAVIGATION__PREV)! as HTMLButtonElement;
+    const button = findByTestId(
+      fixture.nativeElement,
+      TEST_PKM_NAVIGATION__PREV
+    )! as HTMLButtonElement;
     expect(button).not.toBeNull();
     button.click();
     service.getEventListener().subscribe((evt: string) => {
@@ -59,16 +66,22 @@ describe('NavigationButtonComponent', () => {
     component.label = 'Prev';
     component.testId = TEST_PKM_NAVIGATION__PREV;
     fixture.detectChanges();
-    const button = findByTestId(fixture.nativeElement, TEST_PKM_NAVIGATION__PREV)! as HTMLButtonElement;
+    const button = findByTestId(
+      fixture.nativeElement,
+      TEST_PKM_NAVIGATION__PREV
+    )! as HTMLButtonElement;
     expect(button.disabled).toBeTruthy();
-   });
+  });
 
-   it('enabled set to true enables the button', () => {
+  it('enabled set to true enables the button', () => {
     component.enabled = true;
     component.label = 'Prev';
     component.testId = TEST_PKM_NAVIGATION__PREV;
     fixture.detectChanges();
-    const button = findByTestId(fixture.nativeElement, TEST_PKM_NAVIGATION__PREV)! as HTMLButtonElement;
+    const button = findByTestId(
+      fixture.nativeElement,
+      TEST_PKM_NAVIGATION__PREV
+    )! as HTMLButtonElement;
     expect(button.disabled).toBeFalsy();
-   });
+  });
 });

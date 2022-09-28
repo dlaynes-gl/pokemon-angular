@@ -74,14 +74,14 @@ export interface Pokemon {
   order: number;
   past_types: unknown[];
   species: PokemonMetaLink;
-  sprites: PokemonSpriteList & {
+  sprites: Partial<PokemonSpriteList & {
     other: Record<string, PokemonSpriteList>;
   } & {
     versions: Record<
       string,
       Record<string, PokemonSpriteList & { animated?: PokemonSpriteList }>
     >;
-  };
+  }>;
   stats: PokemonStatItem[];
   types: PokemonTypeItem[];
   weight: number;

@@ -1,5 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TEST_PKM_NAVIGATION__NEXT, TEST_PKM_NAVIGATION__PREV } from 'src/app/config/test_ids';
+import {
+  TEST_PKM_NAVIGATION__NEXT,
+  TEST_PKM_NAVIGATION__PREV,
+} from 'src/app/config/test_ids';
 import { findByTestId } from 'src/app/utils/tests';
 import { NavigationButtonComponent } from '../navigation-button/navigation-button.component';
 
@@ -11,9 +14,8 @@ describe('NavigationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NavigationComponent, NavigationButtonComponent ]
-    })
-    .compileComponents();
+      declarations: [NavigationComponent, NavigationButtonComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(NavigationComponent);
     component = fixture.componentInstance;
@@ -25,13 +27,19 @@ describe('NavigationComponent', () => {
   });
 
   it('should show the Next button', (done) => {
-    const button = findByTestId(fixture.nativeElement as HTMLElement, TEST_PKM_NAVIGATION__NEXT)!;
+    const button = findByTestId(
+      fixture.nativeElement as HTMLElement,
+      TEST_PKM_NAVIGATION__NEXT
+    )!;
     expect(button.textContent).toEqual('Next');
     done();
   });
 
   it('should show the Prev button', (done) => {
-    const button = findByTestId(fixture.nativeElement as HTMLElement, TEST_PKM_NAVIGATION__PREV)!;
+    const button = findByTestId(
+      fixture.nativeElement as HTMLElement,
+      TEST_PKM_NAVIGATION__PREV
+    )!;
     expect(button.textContent).toEqual('Prev');
     done();
   });
@@ -43,7 +51,10 @@ describe('NavigationComponent', () => {
     component.prevEnabled = false;
     fixture.detectChanges();
 
-    const button = findByTestId(fixture.nativeElement as HTMLElement, TEST_PKM_NAVIGATION__PREV)! as HTMLButtonElement;
+    const button = findByTestId(
+      fixture.nativeElement as HTMLElement,
+      TEST_PKM_NAVIGATION__PREV
+    )! as HTMLButtonElement;
     expect(button.disabled).toBeTruthy();
     done();
   });
@@ -55,7 +66,10 @@ describe('NavigationComponent', () => {
     component.nextEnabled = false;
     fixture.detectChanges();
 
-    const button = findByTestId(fixture.nativeElement as HTMLElement, TEST_PKM_NAVIGATION__NEXT)! as HTMLButtonElement;
+    const button = findByTestId(
+      fixture.nativeElement as HTMLElement,
+      TEST_PKM_NAVIGATION__NEXT
+    )! as HTMLButtonElement;
     expect(button.disabled).toBeTruthy();
     done();
   });
@@ -67,7 +81,10 @@ describe('NavigationComponent', () => {
     component.prevEnabled = true;
     fixture.detectChanges();
 
-    const button = findByTestId(fixture.nativeElement as HTMLElement, TEST_PKM_NAVIGATION__PREV)! as HTMLButtonElement;
+    const button = findByTestId(
+      fixture.nativeElement as HTMLElement,
+      TEST_PKM_NAVIGATION__PREV
+    )! as HTMLButtonElement;
     expect(button.disabled).toBeFalsy();
     done();
   });
@@ -78,10 +95,11 @@ describe('NavigationComponent', () => {
     component.nextEnabled = true;
     fixture.detectChanges();
 
-    const button = findByTestId(fixture.nativeElement as HTMLElement, TEST_PKM_NAVIGATION__NEXT)! as HTMLButtonElement;
+    const button = findByTestId(
+      fixture.nativeElement as HTMLElement,
+      TEST_PKM_NAVIGATION__NEXT
+    )! as HTMLButtonElement;
     expect(button.disabled).toBeFalsy();
     done();
   });
-
-
 });

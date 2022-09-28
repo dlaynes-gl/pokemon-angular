@@ -105,7 +105,10 @@ describe('PokemonDetailComponent', () => {
     component.types = ['grass', 'poison'];
     fixture.detectChanges();
 
-    const label = findByTestId(fixture.nativeElement, TEST_PKM_DETAIL__TYPE_LABEL)!;
+    const label = findByTestId(
+      fixture.nativeElement,
+      TEST_PKM_DETAIL__TYPE_LABEL
+    )!;
     expect(label).not.toBeNull();
   });
 
@@ -120,7 +123,10 @@ describe('PokemonDetailComponent', () => {
   it('should hide the types label block if there is no data', () => {
     component.types = [];
     fixture.detectChanges();
-    const label = findByTestId(fixture.nativeElement, TEST_PKM_DETAIL__TYPE_LABEL)!;
+    const label = findByTestId(
+      fixture.nativeElement,
+      TEST_PKM_DETAIL__TYPE_LABEL
+    )!;
     expect(label).toBeNull();
   });
 
@@ -177,11 +183,10 @@ describe('PokemonDetailComponent', () => {
       TEST_PKM_DETAIL__SPRITE
     )!;
     expect(sprites.length).toBe(4);
-    sprites.forEach((item)=>{
+    sprites.forEach((item) => {
       expect(item.getAttribute('src')).toBeTruthy();
-    })
+    });
   });
-
 
   it('should show the sprites label block', () => {
     component.sprites = [
@@ -190,7 +195,10 @@ describe('PokemonDetailComponent', () => {
 
     fixture.detectChanges();
 
-    const el = findByTestId(fixture.nativeElement, TEST_PKM_DETAIL__SPRITE_LABEL)!;
+    const el = findByTestId(
+      fixture.nativeElement,
+      TEST_PKM_DETAIL__SPRITE_LABEL
+    )!;
     expect(el).not.toBeNull();
   });
 
@@ -211,7 +219,10 @@ describe('PokemonDetailComponent', () => {
 
     fixture.detectChanges();
 
-    const el = findByTestId(fixture.nativeElement, TEST_PKM_DETAIL__SPRITE_LABEL)!;
+    const el = findByTestId(
+      fixture.nativeElement,
+      TEST_PKM_DETAIL__SPRITE_LABEL
+    )!;
     expect(el).toBeNull();
   });
 
@@ -227,7 +238,10 @@ describe('PokemonDetailComponent', () => {
     component.moves = ['razor-wind'];
     fixture.detectChanges();
 
-    const el = findByTestId(fixture.nativeElement, TEST_PKM_DETAIL__MOVE_LABEL)!;
+    const el = findByTestId(
+      fixture.nativeElement,
+      TEST_PKM_DETAIL__MOVE_LABEL
+    )!;
     expect(el).not.toBeNull();
   });
 
@@ -243,7 +257,10 @@ describe('PokemonDetailComponent', () => {
     component.moves = [];
     fixture.detectChanges();
 
-    const el = findByTestId(fixture.nativeElement, TEST_PKM_DETAIL__MOVE_LABEL)!;
+    const el = findByTestId(
+      fixture.nativeElement,
+      TEST_PKM_DETAIL__MOVE_LABEL
+    )!;
     expect(el).toBeNull();
   });
 });
