@@ -65,21 +65,21 @@ describe('PokemonListItemComponent', () => {
   });
 
   it('should show the pokemon id', (done) => {
-    component.identifier = 'bulbasaur';
+    component.identifier = '1';
 
     fixture.detectChanges();
 
     const mainElement: HTMLElement = fixture.nativeElement;
     const p = mainElement.querySelector(formatTestId(TEST_PKM_LIST_ITEM__ID))!;
     expect(p).not.toBeNull();
-    expect(p.textContent).toEqual('bulbasaur');
+    expect(p.textContent).toEqual('# 1');
     done();
   });
 
-  it('should show call the action function when clicked', (done) => {
-    component.identifier = 'ivysaur';
+  it('should show call the action function with the pokemon id when clicked', (done) => {
+    component.identifier = '2';
     component.selected.subscribe((id: string) => {
-      expect(id).toBe('ivysaur');
+      expect(id).toBe('2');
       done();
     });
     fixture.detectChanges();

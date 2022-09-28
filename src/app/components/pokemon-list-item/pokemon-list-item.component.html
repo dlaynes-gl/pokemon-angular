@@ -1,5 +1,5 @@
 <a class="list__item" data-test="list-item" (click)="click()">
     <span data-test="list-item__name" *ngIf="name">{{name}}</span>
-    <span data-test="list-item__id" *ngIf="identifier">{{identifier}}</span>
+    <span data-test="list-item__id" *ngIf="identifier"># {{identifier}}</span>
     <img data-test="list-item__image" *ngIf="sprite" [src]="sprite" />
 </a>
