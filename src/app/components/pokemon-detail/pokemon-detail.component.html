@@ -1,1 +1,24 @@
-<p>pokemon-detail works!</p>
+<div>
+    <img data-test="detail__main-image" *ngIf="mainImage" [src]="mainImage" />
+    <span data-test="detail__number" *ngIf="id"># {{id}}</span>
+    <span data-test="detail__name" *ngIf="name">{{name}}</span>
+    <div *ngIf="types?.length">
+        <label data-test="detail__type-label">Tipos</label>
+        <span data-test="detail__type">{{types.join(' ')}}</span>
+    </div>
+    <div *ngIf="weight">
+        <label data-test="detail__weight-label">Peso</label>
+        <span data-test="detail__weight">{{weight}}kg</span>
+    </div>
+    <ul *ngIf="sprites.length" class="sprite-list">
+        <label data-test="detail__sprite-label">Sprites</label>
+        <li *ngFor="let sprite of sprites; let i = index">
+            <!-- TODO: make sure the id is being printed in the resulting HTML -->
+            <img data-test="detail__sprite" [src]="sprite" alt="Sprite {{i}}" title="Sprite {{i}}" />
+        </li>
+    </ul>
+    <ul *ngIf="moves.length" class="move-list">
+        <label data-test="detail__move-label">Movimientos</label>
+        <span data-test="detail__move">{{moves.join(' ')}}</span>
+    </ul>
+</div>

@@ -24,11 +24,6 @@ describe('SearchBarComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', (done) => {
-    expect(component).toBeTruthy();
-    done();
-  });
-
   it('should change the local value when writting on the input', (done) => {
     // We need the function triggerEventHandler(), this section
     // won't be refactored for now

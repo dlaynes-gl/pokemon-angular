@@ -26,11 +26,6 @@ describe('PokemonListItemComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create the component', (done) => {
-    expect(component).toBeTruthy();
-    done();
-  });
-
   it('should show the pokemon sprite', (done) => {
     const spr =
       'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png';

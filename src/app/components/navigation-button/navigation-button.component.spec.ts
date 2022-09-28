@@ -25,10 +25,6 @@ describe('NavigationButtonComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create the component', () => {
-    expect(component).toBeTruthy();
-  });
-
   it('should change the button label', (done) => {
     component.label = 'Next';
     component.testId = TEST_PKM_NAVIGATION__NEXT

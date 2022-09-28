@@ -5,3 +5,7 @@ export function formatTestId(str: string) {
 export function findByTestId(component: HTMLElement, str: string){
     return component.querySelector(formatTestId(str));
 }
+
+export function findManyByTestId(component: HTMLElement, str: string){
+    return component.querySelectorAll(formatTestId(str));
+}

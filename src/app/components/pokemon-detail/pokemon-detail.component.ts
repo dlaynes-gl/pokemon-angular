@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-pokemon-detail',
@@ -6,6 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pokemon-detail.component.scss']
 })
 export class PokemonDetailComponent implements OnInit {
+
+  @Input() mainImage = ''
+  @Input() sprites: string[] = []
+  @Input() id = ''
+  @Input() name = ''
+  @Input() types: string[] = []
+  @Input() weight = 0
+  @Input() moves: string[] = []
 
   constructor() { }
 
