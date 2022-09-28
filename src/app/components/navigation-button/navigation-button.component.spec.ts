@@ -63,6 +63,27 @@ describe('NavigationButtonComponent', () => {
       expect(evt).toBe(EVENT_NAV_CLICK_PREV);
       done();
     });
-  })
+  });
 
+  it('enabled set to false disables the button', () => {
+    component.enabled = false;
+    component.label = 'Prev';
+    component.testId = TEST_PKM_NAVIGATION__PREV;
+    fixture.detectChanges();
+    const button: HTMLButtonElement = fixture.nativeElement.querySelector(
+      formatTestId(TEST_PKM_NAVIGATION__PREV)
+    )!;
+    expect(button.disabled).toBeTruthy();
+   });
+
+   it('enabled set to true enables the button', () => {
+    component.enabled = true;
+    component.label = 'Prev';
+    component.testId = TEST_PKM_NAVIGATION__PREV;
+    fixture.detectChanges();
+    const button: HTMLButtonElement = fixture.nativeElement.querySelector(
+      formatTestId(TEST_PKM_NAVIGATION__PREV)
+    )!;
+    expect(button.disabled).toBeFalsy();
+   });
 });

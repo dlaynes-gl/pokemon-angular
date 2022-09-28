@@ -8,7 +8,6 @@ export class ChildEventService {
   private childEvent = new BehaviorSubject<string>('');
 
   emitChildEvent(msg: string) {
-    console.log("Emiting child event ", msg)
     this.childEvent.next(msg);
   }
 

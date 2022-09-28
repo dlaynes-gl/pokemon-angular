@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ChildEventService } from 'src/app/services/child-event.service';
 
 @Component({
@@ -14,13 +14,14 @@ export class NavigationButtonComponent implements OnInit {
 
   @Input() eventName: string = '';
 
+  @Input() enabled = true;
+
   constructor(private eventService: ChildEventService) { }
 
   ngOnInit(): void {
   }
 
   onClick() {
-    console.log("Emiting event", this.eventName);
     if(this.eventName){
       this.eventService.emitChildEvent(this.eventName);
     } else {
