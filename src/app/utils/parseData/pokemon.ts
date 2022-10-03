@@ -1,14 +1,14 @@
-import { Pokemon } from "src/app/models/api/Pokemon";
-import { PokemonItem } from "src/app/models/app/PokemonItem";
+import { Pokemon } from 'src/app/models/api/Pokemon';
+import { PokemonSingle } from 'src/app/models/app/PokemonSingle';
 
-export function convertPokemonDetail(json: Pokemon): PokemonItem{
-    return {
-        id: json.id.toString(),
-        mainImage: '',
-        name: json.name,
-        moves: [],
-        sprites: [],
-        types: [],
-        weight: json.weight
-    }
+export function convertPokemonDetail(json: Pokemon): PokemonSingle {
+  return {
+    id: json.id.toString(),
+    mainImage: '',
+    name: json.name,
+    moves: [],
+    sprites: [],
+    types: [],
+    weight: json.weight,
+  };
 }

@@ -1,9 +1,8 @@
+import type { PokemonMetaLink } from './Pokemon';
+
 export interface PokemonList {
-    count: number
-    next: string | null
-    previous: string | null
-    results: {
-        name: string
-        url: string
-    }[]
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: PokemonMetaLink[];
 }

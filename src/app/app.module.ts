@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NavigationButtonComponent } from './components/navigation-button/navigation-button.component';
+import { SinglePokemonComponent } from './containers/single-pokemon/single-pokemon.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,8 @@ import { NavigationButtonComponent } from './components/navigation-button/naviga
     PokemonListItemComponent,
     PokemonDetailComponent,
     NavigationComponent,
-    NavigationButtonComponent
+    NavigationButtonComponent,
+    SinglePokemonComponent
   ],
   imports: [
     HttpClientModule,

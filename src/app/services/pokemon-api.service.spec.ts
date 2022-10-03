@@ -8,9 +8,11 @@ import {
   HttpTestingController,
 } from '@angular/common/http/testing';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { PokemonList } from '../models/api/PokemonList';
+import { Pokemon } from '../models/api/Pokemon';
 
 describe('PokemonApiService', () => {
-  let service: PokemonApiService<any, any>;
+  let service: PokemonApiService;
 
   let httpTestingController: HttpTestingController;
   let http: HttpClient;
@@ -31,7 +33,7 @@ describe('PokemonApiService', () => {
     const service = TestBed.inject(PokemonApiService);
 
     let succeeded = false;
-    let body: Record<string, unknown> | undefined;
+    let body: PokemonList | undefined;
 
     service.getPokemonList().subscribe((response) => {
       succeeded = true;
@@ -50,7 +52,7 @@ describe('PokemonApiService', () => {
     const service = TestBed.inject(PokemonApiService);
 
     let succeeded = false;
-    let body: Record<string, unknown> | undefined;
+    let body: Pokemon | undefined;
 
     service.getPokemonDetail('bulbasaur').subscribe((response) => {
       succeeded = true;
@@ -76,7 +78,7 @@ describe('PokemonApiService', () => {
     const service = TestBed.inject(PokemonApiService);
 
     let succeeded = false;
-    let body: any[] | undefined;
+    let body: PokemonList | undefined;
 
     service.getPokemonList().subscribe({
       next: (response) => {
@@ -108,7 +110,7 @@ describe('PokemonApiService', () => {
     const service = TestBed.inject(PokemonApiService);
 
     let succeeded = false;
-    let body: any[] | undefined;
+    let body: Pokemon | undefined;
 
     service.getPokemonDetail('pikachu').subscribe({
       next: (response) => {

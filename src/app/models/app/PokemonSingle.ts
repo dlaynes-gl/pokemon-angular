@@ -1,4 +1,4 @@
-export interface PokemonItem {
+export interface PokemonSingle {
     id: string
     name: string
     mainImage: string
