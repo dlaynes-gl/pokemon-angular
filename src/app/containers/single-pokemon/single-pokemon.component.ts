@@ -36,7 +36,6 @@ export class SinglePokemonComponent implements OnInit {
   getDetail(name: string){
     this.service.getPokemonDetail(name).subscribe({
       next: (data) => {
-        console.log("Got data", data)
         this.handlePokemon(data)
       }
     });
@@ -44,7 +43,7 @@ export class SinglePokemonComponent implements OnInit {
 
   handlePokemon = (data: Pokemon) => {
     this.pokemonJSON = data;
-    this.pokemon = convertPokemonDetail(data)
+    this.pokemon = convertPokemonDetail(this.pokemonJSON)
   }
 
 }

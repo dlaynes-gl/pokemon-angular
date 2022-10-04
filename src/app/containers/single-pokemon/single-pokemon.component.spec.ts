@@ -5,6 +5,8 @@ import {
 } from '@angular/common/http/testing';
 import { ComponentFixture, getTestBed, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
+import { PokemonListItemComponent } from 'src/app/components/pokemon-list-item/pokemon-list-item.component';
+import { TEST_PKM_LIST_ITEM } from 'src/app/config/test_ids';
 import { PokemonApiService } from 'src/app/services/pokemon-api.service';
 import { findByTestId } from 'src/app/utils/tests';
 import { bulbasaurJSON } from 'tests/data/pokemon/bulbasaur';
@@ -21,7 +23,7 @@ describe('SinglePokemonComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      declarations: [SinglePokemonComponent],
+      declarations: [SinglePokemonComponent, PokemonListItemComponent],
     }).compileComponents();
 
     httpTestingController = TestBed.inject(HttpTestingController);
@@ -49,8 +51,9 @@ describe('SinglePokemonComponent', () => {
   });
 
   it('should get the details of a pokemon if an id is provided', (done) => {
-
-    const serviceSpy = spyOn(service, 'getPokemonDetail').and.returnValue(of(bulbasaurJSON));
+    const serviceSpy = spyOn(service, 'getPokemonDetail').and.returnValue(
+      of(bulbasaurJSON)
+    );
     const componentSpy = spyOn(component, 'getDetail').and.callThrough();
 
     expect(serviceSpy).not.toHaveBeenCalled();
@@ -63,6 +66,28 @@ describe('SinglePokemonComponent', () => {
     expect(componentSpy).toHaveBeenCalledTimes(1);
     httpTestingController.verify();
     done();
+  });
 
+  it('should pass the details of a pokemon to the child component when rendered', (done) => {
+    const serviceSpy = spyOn(service, 'getPokemonDetail').and.returnValue(
+      of(bulbasaurJSON)
+    );
+
+    component.name = 'bulbasaur';
+    fixture.detectChanges();
+
+    fixture.whenStable().then(() => {
+
+      expect(serviceSpy).toHaveBeenCalled();
+
+      const el = findByTestId(
+        fixture.nativeElement,
+        TEST_PKM_LIST_ITEM
+      )! as HTMLImageElement;
+      expect(el).not.toBeNull();
+
+      httpTestingController.verify();
+      done();
+    });
   });
 });

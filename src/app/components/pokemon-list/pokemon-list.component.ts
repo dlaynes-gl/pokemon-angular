@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import type { PokemonItem } from 'src/app/models/app/PokemonItem';
+import { PokemonMetaLink } from 'src/app/models/api/Pokemon';
+import type { PokemonSingle } from 'src/app/models/app/PokemonSingle';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -8,15 +9,17 @@ import type { PokemonItem } from 'src/app/models/app/PokemonItem';
 })
 export class PokemonListComponent implements OnInit {
 
-  @Input() pokemonList: PokemonItem[] = []
+  static PER_PAGE = 4;
+
+  @Input() pokemonList: PokemonMetaLink[] = []
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  trackById(idx: number, item: PokemonItem){
-    return item.id
+  trackById(idx: number, item: PokemonMetaLink){
+    return item.name
   }
 
 }

@@ -1,8 +1,5 @@
 <div class="pokemon-list">
-    <app-pokemon-list-item
-        *ngFor="let pokemon of pokemonList; trackBy: trackById"
-        [identifier]="pokemon.id"
-        [name]="pokemon.name"
-        [sprite]="pokemon.sprite">
-    </app-pokemon-list-item>
+  <app-single-pokemon
+    *ngFor="let pokemon of pokemonList; trackBy: trackById"
+    [name]="pokemon.name"></app-single-pokemon>
 </div>

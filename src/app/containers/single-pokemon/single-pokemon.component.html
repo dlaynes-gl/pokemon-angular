@@ -1,3 +1,9 @@
 <div>
     <span data-test="error" *ngIf="error">{{error}}</span>
+    <app-pokemon-list-item *ngIf="pokemon"
+        [sprite]="pokemon.sprites[0]"
+        [name]="pokemon.name"
+        [identifier]="pokemon.id"
+    >
+    </app-pokemon-list-item>
 </div>
