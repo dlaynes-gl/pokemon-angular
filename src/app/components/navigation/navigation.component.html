@@ -1,4 +1,4 @@
 <div class="navigation" data-test="navigation">
-    <app-navigation-button [enabled]="prevEnabled" label="Prev" testId="navigation__btn-prev" eventName="@event/nav-click-prev"></app-navigation-button>
-    <app-navigation-button [enabled]="nextEnabled" label="Next" testId="navigation__btn-next" eventName="@event/nav-click-next"></app-navigation-button>
+    <app-navigation-button [enabled]="prevEnabled" label="Prev" testId="navigation__btn-prev" [eventName]="prevEvent"></app-navigation-button>
+    <app-navigation-button [enabled]="nextEnabled" label="Next" testId="navigation__btn-next" [eventName]="nextEvent"></app-navigation-button>
 </div>

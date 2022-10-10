@@ -1,13 +1,8 @@
-import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+export abstract class ChildEventService<T> {
+  private childEvent = new BehaviorSubject<T|null>(null);
 
-@Injectable({
-  providedIn: 'root',
-})
-export class ChildEventService {
-  private childEvent = new BehaviorSubject<string>('');
-
-  emitChildEvent(msg: string) {
+  emitChildEvent(msg: T) {
     this.childEvent.next(msg);
   }
 

@@ -1,14 +1,21 @@
+import { Inject, Injectable } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { Observable } from 'rxjs';
 
 import { ChildEventService } from './child-event.service';
+@Injectable({
+  providedIn: 'root'
+})
+class DemoEventService extends ChildEventService<string> {
+
+}
 
 describe('ChildEventService', () => {
-  let service: ChildEventService;
+  let service: DemoEventService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ChildEventService);
+    service = TestBed.inject(DemoEventService);
   });
 
   it('should be created', () => {

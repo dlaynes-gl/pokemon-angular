@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { PokemonEventService } from 'src/app/services/events/pokemon-event.service';
 
 @Component({
   selector: 'app-pokemon-list-item',
@@ -16,16 +17,16 @@ export class PokemonListItemComponent implements OnInit {
   /* ID of the Pokemon */
   @Input() identifier = ''
 
-  @Output() selected = new EventEmitter<string>();
+  constructor(private event: PokemonEventService) {
 
-  constructor() { }
+  }
 
   ngOnInit(): void {
   
   }
 
   click() {
-    this.selected.emit(this.identifier)
+    this.event.emitChildEvent(this.identifier)
   }
 
 }

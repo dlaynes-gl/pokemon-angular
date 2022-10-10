@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PokemonMetaLink } from 'src/app/models/api/Pokemon';
-import type { PokemonSingle } from 'src/app/models/app/PokemonSingle';
 
 @Component({
   selector: 'app-pokemon-list',

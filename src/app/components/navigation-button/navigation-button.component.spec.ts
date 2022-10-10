@@ -1,10 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { EVENT_NAV_CLICK_PREV } from 'src/app/config/constants/events';
+import { NavEvent } from 'src/app/config/constants/events';
 import {
   TEST_PKM_NAVIGATION__NEXT,
   TEST_PKM_NAVIGATION__PREV,
 } from 'src/app/config/test_ids';
-import { ChildEventService } from 'src/app/services/child-event.service';
+import { NavigationEventService } from 'src/app/services/events/navigation-event.service';
 import { findByTestId } from 'src/app/utils/tests';
 
 import { NavigationButtonComponent } from './navigation-button.component';
@@ -12,12 +12,12 @@ import { NavigationButtonComponent } from './navigation-button.component';
 describe('NavigationButtonComponent', () => {
   let component: NavigationButtonComponent;
   let fixture: ComponentFixture<NavigationButtonComponent>;
-  let service: ChildEventService;
+  let service: NavigationEventService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [NavigationButtonComponent],
-      providers: [ChildEventService],
+      providers: [NavigationEventService],
     });
     TestBed.compileComponents();
 
@@ -43,10 +43,10 @@ describe('NavigationButtonComponent', () => {
   });
 
   it('should emit an event when clicked', (done) => {
-    service = TestBed.inject(ChildEventService);
+    service = TestBed.inject(NavigationEventService);
     component.label = 'Prev';
     component.testId = TEST_PKM_NAVIGATION__PREV;
-    component.eventName = EVENT_NAV_CLICK_PREV;
+    component.eventName = NavEvent.clickPrev;
     fixture.detectChanges();
 
     const button = findByTestId(
@@ -55,8 +55,8 @@ describe('NavigationButtonComponent', () => {
     )! as HTMLButtonElement;
     expect(button).not.toBeNull();
     button.click();
-    service.getEventListener().subscribe((evt: string) => {
-      expect(evt).toBe(EVENT_NAV_CLICK_PREV);
+    service.getEventListener().subscribe((evt: NavEvent|null) => {
+      expect(evt).toBe(NavEvent.clickPrev);
       done();
     });
   });

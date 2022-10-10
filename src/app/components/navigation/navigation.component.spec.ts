@@ -1,8 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NavEvent } from 'src/app/config/constants/events';
 import {
   TEST_PKM_NAVIGATION__NEXT,
   TEST_PKM_NAVIGATION__PREV,
 } from 'src/app/config/test_ids';
+import { NavigationEventService } from 'src/app/services/events/navigation-event.service';
 import { findByTestId } from 'src/app/utils/tests';
 import { NavigationButtonComponent } from '../navigation-button/navigation-button.component';
 
@@ -11,11 +13,15 @@ import { NavigationComponent } from './navigation.component';
 describe('NavigationComponent', () => {
   let component: NavigationComponent;
   let fixture: ComponentFixture<NavigationComponent>;
+  let service: NavigationEventService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [NavigationComponent, NavigationButtonComponent],
+      providers: [NavigationEventService]
     }).compileComponents();
+
+    service = TestBed.inject(NavigationEventService);
 
     fixture = TestBed.createComponent(NavigationComponent);
     component = fixture.componentInstance;
@@ -102,4 +108,35 @@ describe('NavigationComponent', () => {
     expect(button.disabled).toBeFalsy();
     done();
   });
+
+  it('should emit the Previous event when clicking on the prev button', (done) => {
+    spyOn(service, 'emitChildEvent')
+    component.prevEnabled = true;
+    fixture.detectChanges();
+
+    const button = findByTestId(
+      fixture.nativeElement as HTMLElement,
+      TEST_PKM_NAVIGATION__PREV
+    )! as HTMLButtonElement;
+    button.click();
+
+    expect(service.emitChildEvent).toHaveBeenCalledWith(NavEvent.clickPrev)
+    done();
+  });
+
+  it('should emit the Next event when clicking on the next button', (done) => {
+    spyOn(service, 'emitChildEvent')
+    component.nextEnabled = true;
+    fixture.detectChanges();
+
+    const button = findByTestId(
+      fixture.nativeElement as HTMLElement,
+      TEST_PKM_NAVIGATION__NEXT
+    )! as HTMLButtonElement;
+    button.click();
+
+    expect(service.emitChildEvent).toHaveBeenCalledWith(NavEvent.clickNext)
+    done();
+  });
+
 });

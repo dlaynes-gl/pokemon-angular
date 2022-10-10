@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ChildEventService } from 'src/app/services/child-event.service';
+import { NavEvent } from 'src/app/config/constants/events';
+import { NavigationEventService } from 'src/app/services/events/navigation-event.service';
 
 @Component({
   selector: 'app-navigation-button',
@@ -12,16 +13,17 @@ export class NavigationButtonComponent implements OnInit {
 
   @Input() testId?: string;
 
-  @Input() eventName: string = '';
+  @Input() eventName: NavEvent|null = null;
 
   @Input() enabled = true;
 
-  constructor(private eventService: ChildEventService) { }
+  constructor(private eventService: NavigationEventService) { }
 
   ngOnInit(): void {
   }
 
   onClick() {
+    console.log("Performing click", this.eventName)
     if(this.eventName){
       this.eventService.emitChildEvent(this.eventName);
     } else {

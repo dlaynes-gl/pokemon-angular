@@ -1,10 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
 import {
   TEST_PKM_LIST_ITEM__ID,
   TEST_PKM_LIST_ITEM__IMAGE,
   TEST_PKM_LIST_ITEM__NAME,
   TEST_PKM_LIST_ITEM,
 } from 'src/app/config/test_ids';
+import { PokemonEventService } from 'src/app/services/events/pokemon-event.service';
 import { findByTestId } from 'src/app/utils/tests';
 
 import { PokemonListItemComponent } from './pokemon-list-item.component';
@@ -12,12 +14,14 @@ import { PokemonListItemComponent } from './pokemon-list-item.component';
 describe('PokemonListItemComponent', () => {
   let component: PokemonListItemComponent;
   let fixture: ComponentFixture<PokemonListItemComponent>;
+  let service: PokemonEventService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [PokemonListItemComponent],
     }).compileComponents();
 
+    service = TestBed.inject(PokemonEventService);
     fixture = TestBed.createComponent(PokemonListItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -68,19 +72,18 @@ describe('PokemonListItemComponent', () => {
     done();
   });
 
-  it('should show call the action function with the pokemon id when clicked', (done) => {
-    component.identifier = '2';
-    component.selected.subscribe((id: string) => {
-      expect(id).toBe('2');
-      done();
-    });
+  it('should emit a PokemonEventService event when clicking on an item', (done)=>{
+    spyOn(service, 'emitChildEvent')
+    component.identifier = '1';
     fixture.detectChanges();
 
     const el = findByTestId(
       fixture.nativeElement,
       TEST_PKM_LIST_ITEM
     )! as HTMLAnchorElement;
-    expect(el).not.toBeNull();
     el.click();
-  });
+
+    expect(service.emitChildEvent).toHaveBeenCalledOnceWith('1');
+    done();
+  })
 });

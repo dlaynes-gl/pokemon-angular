@@ -1,4 +1,4 @@
-<div class="pokemon-list">
+<div class="pokemon-list" data-test="list">
   <app-single-pokemon
     *ngFor="let pokemon of pokemonList; trackBy: trackById"
     [name]="pokemon.name"></app-single-pokemon>
