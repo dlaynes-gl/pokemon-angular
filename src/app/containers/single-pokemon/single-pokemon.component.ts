@@ -21,11 +21,10 @@ export class SinglePokemonComponent implements OnInit {
   error = '';
 
   constructor(private service: PokemonApiService) {
-    console.log("Calling constructor SPC")
+    
   }
 
   ngOnInit(): void {
-    console.log("Element has been created", this.name)
     if(!this.name){
       this.error = "Missing pokemon ID";
       return;
